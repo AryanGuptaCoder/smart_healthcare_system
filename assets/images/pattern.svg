@@ -1,0 +1,29 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0H400V400H0V0Z" fill="#F8F9FA"/>
+  <circle cx="40" cy="40" r="3" fill="#E9ECEF"/>
+  <circle cx="120" cy="40" r="3" fill="#E9ECEF"/>
+  <circle cx="200" cy="40" r="3" fill="#E9ECEF"/>
+  <circle cx="280" cy="40" r="3" fill="#E9ECEF"/>
+  <circle cx="360" cy="40" r="3" fill="#E9ECEF"/>
+  <circle cx="40" cy="120" r="3" fill="#E9ECEF"/>
+  <circle cx="120" cy="120" r="3" fill="#E9ECEF"/>
+  <circle cx="200" cy="120" r="3" fill="#E9ECEF"/>
+  <circle cx="280" cy="120" r="3" fill="#E9ECEF"/>
+  <circle cx="360" cy="120" r="3" fill="#E9ECEF"/>
+  <circle cx="40" cy="200" r="3" fill="#E9ECEF"/>
+  <circle cx="120" cy="200" r="3" fill="#E9ECEF"/>
+  <circle cx="200" cy="200" r="3" fill="#E9ECEF"/>
+  <circle cx="280" cy="200" r="3" fill="#E9ECEF"/>
+  <circle cx="360" cy="200" r="3" fill="#E9ECEF"/>
+  <circle cx="40" cy="280" r="3" fill="#E9ECEF"/>
+  <circle cx="120" cy="280" r="3" fill="#E9ECEF"/>
+  <circle cx="200" cy="280" r="3" fill="#E9ECEF"/>
+  <circle cx="280" cy="280" r="3" fill="#E9ECEF"/>
+  <circle cx="360" cy="280" r="3" fill="#E9ECEF"/>
+  <circle cx="40" cy="360" r="3" fill="#E9ECEF"/>
+  <circle cx="120" cy="360" r="3" fill="#E9ECEF"/>
+  <circle cx="200" cy="360" r="3" fill="#E9ECEF"/>
+  <circle cx="280" cy="360" r="3" fill="#E9ECEF"/>
+  <circle cx="360" cy="360" r="3" fill="#E9ECEF"/>
+</svg>
+

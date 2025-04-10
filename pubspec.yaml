@@ -1,0 +1,60 @@
+name: smart_healthcare_system
+description: A Smart Healthcare System with real-time monitoring and personalized insights.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Firebase
+  firebase_core: ^2.25.4
+  firebase_auth: ^4.15.3
+  cloud_firestore: ^4.16.1
+  firebase_storage: ^11.7.2
+  firebase_messaging: ^14.7.9
+
+  # State Management
+  provider: ^6.1.2
+
+  # UI
+  flutter_svg: ^2.0.9
+  google_fonts: ^6.1.0
+  fl_chart: ^0.66.2
+  lottie: ^3.1.0
+  shimmer: ^3.0.0
+
+  # Bluetooth & Connectivity
+  # flutter_bluetooth_serial: ^0.4.0
+  flutter_blue_plus: ^1.18.1
+  wifi_scan: ^0.4.1+2
+  network_info_plus: ^4.0.2
+
+  # Notifications
+  flutter_local_notifications: ^16.3.1
+
+  # Utils
+  intl: ^0.19.0
+  shared_preferences: ^2.2.2
+  permission_handler: ^11.3.1
+  uuid: ^4.2.1
+
+  # Animations
+  flutter_animate: ^4.5.0
+  image_picker: ^1.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/animations/

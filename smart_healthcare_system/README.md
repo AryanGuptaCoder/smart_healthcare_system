@@ -1,4 +1,4 @@
-# smart_healthcare
+# smart_healthcare_system
 
 A new Flutter project.
 
