@@ -14,7 +14,8 @@ class HealthDetailsScreen extends StatefulWidget {
   State<HealthDetailsScreen> createState() => _HealthDetailsScreenState();
 }
 
-class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTickerProviderStateMixin {
+class _HealthDetailsScreenState extends State<HealthDetailsScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isLoading = true;
   List<HealthData> _historicalData = [];
@@ -36,18 +37,19 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
 
   Future<void> _loadData() async {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    final healthDataProvider = Provider.of<HealthDataProvider>(context, listen: false);
-    
+    final healthDataProvider =
+        Provider.of<HealthDataProvider>(context, listen: false);
+
     if (authProvider.user != null) {
       final endDate = DateTime.now();
       final startDate = endDate.subtract(const Duration(hours: 24));
-      
+
       _historicalData = await healthDataProvider.getHistoricalData(
         authProvider.user!.id,
         startDate,
         endDate,
       );
-      
+
       if (mounted) {
         setState(() {
           _isLoading = false;
@@ -61,7 +63,7 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
       final data = entry.value;
       final x = entry.key.toDouble();
       double y;
-      
+
       switch (_selectedMetric) {
         case 'heartRate':
           y = data.heartRate;
@@ -78,7 +80,7 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
         default:
           y = 0;
       }
-      
+
       return FlSpot(x, y);
     }).toList();
   }
@@ -158,7 +160,7 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
                     padding: const EdgeInsets.all(16.0),
                     child: LineChart(
                       LineChartData(
-                        gridData: FlGridData(show: true),
+                        gridData: const FlGridData(show: true),
                         titlesData: FlTitlesData(
                           leftTitles: AxisTitles(
                             sideTitles: SideTitles(
@@ -197,10 +199,13 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
                             isCurved: true,
                             color: Theme.of(context).colorScheme.primary,
                             barWidth: 3,
-                            dotData: FlDotData(show: false),
+                            dotData: const FlDotData(show: false),
                             belowBarData: BarAreaData(
                               show: true,
-                              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.1),
                             ),
                           ),
                         ],
@@ -227,7 +232,7 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Statistics',
                           style: AppTextStyles.heading3,
                         ),
@@ -294,7 +299,7 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
 
   String _calculateAverage() {
     if (_historicalData.isEmpty) return '0';
-    
+
     double sum = 0;
     for (var data in _historicalData) {
       switch (_selectedMetric) {
@@ -312,14 +317,14 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
           break;
       }
     }
-    
+
     final average = sum / _historicalData.length;
     return _formatValue(average);
   }
 
   String _calculateMin() {
     if (_historicalData.isEmpty) return '0';
-    
+
     double min = double.infinity;
     for (var data in _historicalData) {
       double value;
@@ -341,13 +346,13 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
       }
       if (value < min) min = value;
     }
-    
+
     return _formatValue(min);
   }
 
   String _calculateMax() {
     if (_historicalData.isEmpty) return '0';
-    
+
     double max = double.negativeInfinity;
     for (var data in _historicalData) {
       double value;
@@ -369,7 +374,7 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
       }
       if (value > max) max = value;
     }
-    
+
     return _formatValue(max);
   }
 
@@ -388,4 +393,3 @@ class _HealthDetailsScreenState extends State<HealthDetailsScreen> with SingleTi
     }
   }
 }
-
