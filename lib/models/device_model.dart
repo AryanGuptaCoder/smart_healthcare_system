@@ -36,7 +36,7 @@ class DeviceModel {
       signalStrength: json['signalStrength'] as int?,
     );
   }
-
+//Bujda chai Json bata hundo raixa
   Map<String, dynamic> toJson() {
     return {
       'id': id,

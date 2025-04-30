@@ -11,6 +11,8 @@ import 'package:smart_healthcare_system/screens/dashboard/widgets/insights_card.
 import 'package:smart_healthcare_system/screens/dashboard/widgets/notification_bell.dart';
 import 'package:smart_healthcare_system/utils/app_theme.dart';
 import 'package:smart_healthcare_system/widgets/loading_indicator.dart';
+//<Dev Ayush: I changed the label text for ECG as requested but idk if it will effect this
+//long ass code it seems like it does but it works fine just dont ask me>
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -263,7 +265,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Expanded(
               child: _buildActionButton(
                 icon: Icons.monitor_heart,
-                label: 'ECG',
+                label: 'Metric',
                 onTap: () {
                   Navigator.pushNamed(
                     context, 

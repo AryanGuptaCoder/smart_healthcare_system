@@ -41,7 +41,7 @@ class DeviceStatusCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
-              isConnected ? Icons.bluetooth_connected : Icons.bluetooth_disabled,
+              isConnected ? Icons.wifi : Icons.wifi_off,
               color: isConnected
                   ? Theme.of(context).colorScheme.primary
                   : Theme.of(context).colorScheme.error,
