@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _emailController.text.trim(),
         _passwordController.text,
       );
-      
+
       if (mounted) {
         Navigator.pushReplacementNamed(context, '/dashboard');
       }
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Color(0xFF4285F4),
                   ),
                   const SizedBox(height: 24),
-                  Text(
+                  const Text(
                     'Welcome Back',
                     style: AppTextStyles.heading1,
                     textAlign: TextAlign.center,
@@ -96,7 +96,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .error
+                            .withOpacity(0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -119,7 +122,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                          .hasMatch(value)) {
                         return 'Please enter a valid email';
                       }
                       return null;
@@ -168,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Don\'t have an account?',
                         style: AppTextStyles.body2,
                       ),
@@ -195,4 +199,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

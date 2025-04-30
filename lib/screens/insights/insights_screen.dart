@@ -3,10 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:smart_healthcare_system/models/health_data_model.dart';
 import 'package:smart_healthcare_system/providers/auth_provider.dart';
 import 'package:smart_healthcare_system/providers/health_data_provider.dart';
-import 'package:smart_healthcare_system/utils/app_theme.dart';
+//yo chai kasko lagi ho hw mama <dev1: Ayush >
 import 'package:smart_healthcare_system/widgets/loading_indicator.dart';
 
-Widget _buildSummaryCard(BuildContext context, HealthDataProvider healthDataProvider) {
+Widget _buildSummaryCard(
+    BuildContext context, HealthDataProvider healthDataProvider) {
   return Card(
     child: Padding(
       padding: const EdgeInsets.all(16.0),
@@ -36,14 +37,16 @@ Widget _buildTrendsCard(BuildContext context) {
   );
 }
 
-Widget _buildRecommendationsCard(BuildContext context, HealthDataProvider healthDataProvider) {
+Widget _buildRecommendationsCard(
+    BuildContext context, HealthDataProvider healthDataProvider) {
   return Card(
     child: Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Recommendations', style: Theme.of(context).textTheme.titleLarge),
+          Text('Recommendations',
+              style: Theme.of(context).textTheme.titleLarge),
         ],
       ),
     ),
@@ -69,7 +72,8 @@ class _InsightsScreenState extends State<InsightsScreen> {
 
   Future<void> _loadData() async {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    final healthDataProvider = Provider.of<HealthDataProvider>(context, listen: false);
+    final healthDataProvider =
+        Provider.of<HealthDataProvider>(context, listen: false);
 
     if (authProvider.user != null) {
       _recentData = await healthDataProvider.getRecentHealthData(
@@ -96,24 +100,24 @@ class _InsightsScreenState extends State<InsightsScreen> {
       body: _isLoading
           ? const Center(child: LoadingIndicator())
           : RefreshIndicator(
-        onRefresh: _loadData,
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            if (_recentData.isNotEmpty) ...[
-              _buildSummaryCard(context, healthDataProvider),
-              const SizedBox(height: 16),
-              _buildTrendsCard(context),
-              const SizedBox(height: 16),
-              _buildRecommendationsCard(context, healthDataProvider),
-            ] else ...[
-              const Center(
-                child: Text('No health data available'),
+              onRefresh: _loadData,
+              child: ListView(
+                padding: const EdgeInsets.all(16),
+                children: [
+                  if (_recentData.isNotEmpty) ...[
+                    _buildSummaryCard(context, healthDataProvider),
+                    const SizedBox(height: 16),
+                    _buildTrendsCard(context),
+                    const SizedBox(height: 16),
+                    _buildRecommendationsCard(context, healthDataProvider),
+                  ] else ...[
+                    const Center(
+                      child: Text('No health data available'),
+                    ),
+                  ],
+                ],
               ),
-            ],
-          ],
-        ),
-      ),
+            ),
     );
   }
 }

@@ -11,6 +11,8 @@ import 'package:smart_healthcare_system/screens/dashboard/widgets/insights_card.
 import 'package:smart_healthcare_system/screens/dashboard/widgets/notification_bell.dart';
 import 'package:smart_healthcare_system/utils/app_theme.dart';
 import 'package:smart_healthcare_system/widgets/loading_indicator.dart';
+//<Dev Ayush: I changed the label text for ECG as requested but idk if it will effect this
+//long ass code it seems like it does but it works fine just dont ask me>
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -21,19 +23,21 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   bool _isLoading = true;
-  
+
   @override
   void initState() {
     super.initState();
     _loadData();
   }
-  
+
   Future<void> _loadData() async {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    final healthDataProvider = Provider.of<HealthDataProvider>(context, listen: false);
+    final healthDataProvider =
+        Provider.of<HealthDataProvider>(context, listen: false);
     final deviceProvider = Provider.of<DeviceProvider>(context, listen: false);
-    final notificationProvider = Provider.of<NotificationProvider>(context, listen: false);
-    
+    final notificationProvider =
+        Provider.of<NotificationProvider>(context, listen: false);
+
     if (authProvider.user != null) {
       await Future.wait([
         healthDataProvider.fetchLatestData(authProvider.user!.id),
@@ -42,26 +46,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
         notificationProvider.fetchNotifications(authProvider.user!.id),
       ]);
     }
-    
+
     setState(() {
       _isLoading = false;
     });
   }
-  
+
   Future<void> _refreshData() async {
     setState(() {
       _isLoading = true;
     });
     await _loadData();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
     final healthDataProvider = Provider.of<HealthDataProvider>(context);
     final deviceProvider = Provider.of<DeviceProvider>(context);
     final notificationProvider = Provider.of<NotificationProvider>(context);
-    
+
     if (_isLoading) {
       return const Scaffold(
         body: Center(
@@ -69,10 +73,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       );
     }
-    
+
     final user = authProvider.user;
     final latestData = healthDataProvider.latestData;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -110,7 +114,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 },
               ),
               const SizedBox(height: 16),
-              Text(
+              const Text(
                 'Health Metrics',
                 style: AppTextStyles.heading3,
               ),
@@ -180,7 +184,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
-  
+
   Widget _buildHealthMetricsGrid(HealthData data) {
     return GridView.count(
       crossAxisCount: 2,
@@ -197,7 +201,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: data.isHeartRateNormal ? Colors.green : Colors.red,
           onTap: () {
             Navigator.pushNamed(
-              context, 
+              context,
               '/health-details',
               arguments: {'metric': 'heartRate'},
             );
@@ -211,7 +215,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: data.isSpO2Normal ? Colors.green : Colors.red,
           onTap: () {
             Navigator.pushNamed(
-              context, 
+              context,
               '/health-details',
               arguments: {'metric': 'spO2'},
             );
@@ -225,7 +229,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: data.isTemperatureNormal ? Colors.green : Colors.red,
           onTap: () {
             Navigator.pushNamed(
-              context, 
+              context,
               '/health-details',
               arguments: {'metric': 'temperature'},
             );
@@ -239,7 +243,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: data.isStressLevelNormal ? Colors.green : Colors.red,
           onTap: () {
             Navigator.pushNamed(
-              context, 
+              context,
               '/health-details',
               arguments: {'metric': 'stress'},
             );
@@ -248,12 +252,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ],
     );
   }
-  
+
   Widget _buildQuickActions() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Quick Actions',
           style: AppTextStyles.heading3,
         ),
@@ -263,10 +267,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Expanded(
               child: _buildActionButton(
                 icon: Icons.monitor_heart,
-                label: 'ECG',
+                label: 'Metric',
                 onTap: () {
                   Navigator.pushNamed(
-                    context, 
+                    context,
                     '/health-details',
                     arguments: {'metric': 'ecg'},
                   );
@@ -312,7 +316,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ],
     );
   }
-  
+
   Widget _buildActionButton({
     required IconData icon,
     required String label,
@@ -324,7 +328,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceVariant,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -348,4 +352,3 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 }
-

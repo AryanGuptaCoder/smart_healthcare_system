@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 32),
-              Text(
+              const Text(
                 'Personal Information',
                 style: AppTextStyles.heading3,
               ),
@@ -160,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 readOnly: true, // Email cannot be changed
               ),
               const SizedBox(height: 32),
-              Text(
+              const Text(
                 'App Settings',
                 style: AppTextStyles.heading3,
               ),
@@ -243,4 +243,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-

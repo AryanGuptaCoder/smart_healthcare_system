@@ -54,7 +54,7 @@ class _SignupScreenState extends State<SignupScreen> {
         _emailController.text.trim(),
         _passwordController.text,
       );
-      
+
       if (mounted) {
         Navigator.pushReplacementNamed(context, '/dashboard');
       }
@@ -90,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     color: Color(0xFF4285F4),
                   ),
                   const SizedBox(height: 24),
-                  Text(
+                  const Text(
                     'Create Account',
                     style: AppTextStyles.heading1,
                     textAlign: TextAlign.center,
@@ -108,7 +108,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .error
+                            .withOpacity(0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -144,7 +147,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                          .hasMatch(value)) {
                         return 'Please enter a valid email';
                       }
                       return null;
@@ -195,7 +199,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Already have an account?',
                         style: AppTextStyles.body2,
                       ),
@@ -222,4 +226,3 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 }
-

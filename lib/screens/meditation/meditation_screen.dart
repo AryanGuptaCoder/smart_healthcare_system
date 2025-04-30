@@ -49,7 +49,7 @@ class _MeditationScreenState extends State<MeditationScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text(
+          const Text(
             'Guided Meditation',
             style: AppTextStyles.heading2,
           ),
@@ -154,4 +154,3 @@ class _MeditationScreenState extends State<MeditationScreen> {
     );
   }
 }
-

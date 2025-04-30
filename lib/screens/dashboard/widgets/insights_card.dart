@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_healthcare_system/models/health_data_model.dart';
 import 'package:smart_healthcare_system/utils/app_theme.dart';
+//Dev Ayush: So if u didn't know we are using JSON Serialzation via model or DTO
+//Read more from Chat GPT
 
 class InsightsCard extends StatelessWidget {
   final HealthData? latestData;

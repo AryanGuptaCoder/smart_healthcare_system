@@ -57,12 +57,12 @@ class _DevicePairingScreenState extends State<DevicePairingScreen> {
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   const SizedBox(height: 16),
-                  Text(
+                  const Text(
                     'No devices found',
                     style: AppTextStyles.heading3,
                   ),
                   const SizedBox(height: 8),
-                  Text(
+                  const Text(
                     'Make sure your device is powered on and in pairing mode',
                     style: AppTextStyles.body2,
                     textAlign: TextAlign.center,
@@ -80,8 +80,8 @@ class _DevicePairingScreenState extends State<DevicePairingScreen> {
 
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Text(
                   'Available Devices',
                   style: AppTextStyles.heading3,
@@ -130,10 +130,10 @@ class _DevicePairingScreenState extends State<DevicePairingScreen> {
   }
 
   Widget _buildDeviceCard(
-      WiFiAccessPoint device,
-      DeviceProvider deviceProvider,
-      AuthProvider authProvider,
-      ) {
+    WiFiAccessPoint device,
+    DeviceProvider deviceProvider,
+    AuthProvider authProvider,
+  ) {
     final isConnecting = deviceProvider.isConnecting;
     final isConnected = deviceProvider.connectedDevice?.ssid == device.ssid;
 
@@ -188,7 +188,8 @@ class _DevicePairingScreenState extends State<DevicePairingScreen> {
                 text: isConnected ? 'Connected' : 'Connect',
                 onPressed: isConnected
                     ? () {}
-                    : () => _handleConnect(deviceProvider, authProvider, device),
+                    : () =>
+                        _handleConnect(deviceProvider, authProvider, device),
                 backgroundColor: isConnected
                     ? Theme.of(context).colorScheme.secondary
                     : null,
@@ -199,7 +200,8 @@ class _DevicePairingScreenState extends State<DevicePairingScreen> {
     );
   }
 
-  void _handleConnect(DeviceProvider deviceProvider, AuthProvider authProvider, WiFiAccessPoint device) {
+  void _handleConnect(DeviceProvider deviceProvider, AuthProvider authProvider,
+      WiFiAccessPoint device) {
     if (authProvider.user != null) {
       deviceProvider.connectToDevice(device, authProvider.user!.id).then((_) {
         if (mounted && deviceProvider.isConnected) {
