@@ -304,7 +304,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(width: 16),
             Expanded(
               child: _buildActionButton(
-                icon: Icons.bluetooth,
+                icon: Icons.devices,
                 label: 'Connect Device',
                 onTap: () {
                   Navigator.pushNamed(context, '/device-pairing');
